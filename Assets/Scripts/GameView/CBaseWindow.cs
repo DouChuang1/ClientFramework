@@ -139,7 +139,8 @@ public abstract class CBaseWindow  {
         //}
 
         //GameObject obj = LoadUiResource.LoadRes(GameMethod.GetUiCamera.transform, mResName);
-        GameObject obj = Resources.Load(mResName) as GameObject;
+       // GameObject obj = Resources.Load(mResName) as GameObject;
+        GameObject obj = GameObject.Instantiate(Resources.Load(mResName)) as GameObject;
 
         if (obj == null)
         {
@@ -149,7 +150,7 @@ public abstract class CBaseWindow  {
 
         mRoot = obj.transform;
 
-        mRoot.gameObject.SetActive(false);
+        mRoot.gameObject.SetActive(true);
 
         return true;
     }
