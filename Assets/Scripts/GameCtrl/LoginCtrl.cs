@@ -13,5 +13,16 @@ public class LoginCtrl : Singleton<LoginCtrl> {
         Event.Broadcast(EGameEvent.eGameEvent_LoginExit);
     }
 
+    public void Login(string userName,string pwd)
+    {
+        if (userName == "小黑子" && pwd == "1992")
+        {
+            Event.Broadcast(EGameEvent.eGameEvent_LoginSccess);
+        }
+        else
+        {
+            Event.Broadcast(EGameEvent.eGameEvent_LoginFail);
+        }
+    }
 
 }

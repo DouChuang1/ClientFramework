@@ -9,7 +9,7 @@ public class TestEvent : MonoBehaviour {
         Event.AddListener(EGameEvent.eGameEvent_TestNoParam, TestEventMethodNoParam);
         Event.AddListener<string>(EGameEvent.eGameEvent_TestSingleParam, TestEventMethodSingleParam);
         WindowsManager.Instance.ChangeScenseToLogin(EScenesType.EST_None);
-        LoginCtrl.Instance.Enter();
+        GameStateManager.Instance.EnterDefaultState();
 	}
 	
 	// Update is called once per frame

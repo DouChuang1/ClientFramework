@@ -35,14 +35,20 @@ public class CLoginWindow : CBaseWindow
     //窗口控件初始化
     protected override void InitWidget()
     {
-        //userName = GameObject.Find("InputField_username").GetComponent<InputField>();
-        //password = GameObject.Find("InputField_password").GetComponent<InputField>();
-        login = GameObject.Find("Button_login").GetComponent<Button>();
+        userName = mRoot.FindChild("InputField_username").GetComponent<InputField>();
+        password = mRoot.FindChild("InputField_password").GetComponent<InputField>();
+        login = mRoot.FindChild("Button_login").GetComponent<Button>();
 
-        //login.onClick.AddListener()
+        login.onClick.AddListener(OnLogin);
     }
 
+    private void OnLogin()
+    {
+        string account = userName.text;
+        string pwd = password.text;
 
+        LoginCtrl.Instance.Login(account, pwd);
+    }
 
     protected override void RealseWidget()
     {
@@ -63,13 +69,25 @@ public class CLoginWindow : CBaseWindow
     //游戏事件注册
     protected override void OnAddListener()
     {
-
+        Event.AddListener(EGameEvent.eGameEvent_LoginSccess, OnLoginSucess);
+        Event.AddListener(EGameEvent.eGameEvent_LoginFail, OnLoginFail);
     }
 
     //游戏事件注消
     protected override void OnRemoveListener()
     {
+        Event.RemoveListener(EGameEvent.eGameEvent_LoginSccess, OnLoginSucess);
+        Event.RemoveListener(EGameEvent.eGameEvent_LoginFail, OnLoginFail);
+    }
 
+    private void OnLoginSucess()
+    {
+        Event.SendEvent(new CEvent(EGameEvent.eGameEvent_IntoLobby));
+    }
+
+    private void OnLoginFail()
+    {
+        Debug.LogError("Login Fail");
     }
    
     

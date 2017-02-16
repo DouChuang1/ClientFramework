@@ -150,7 +150,7 @@ public abstract class CBaseWindow  {
 
         mRoot = obj.transform;
 
-        mRoot.gameObject.SetActive(true);
+        mRoot.gameObject.SetActive(false);
 
         return true;
     }
@@ -161,7 +161,7 @@ public abstract class CBaseWindow  {
         if (mRoot)
         {
             //LoadUiResource.DestroyLoad(mRoot.gameObject);
-
+            GameObject.DestroyImmediate(mRoot.gameObject);
             mRoot = null;
         }
     }

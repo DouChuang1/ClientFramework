@@ -7,4 +7,8 @@ public enum EGameEvent
     eGameEvent_TestSingleParam,
     eGameEvent_LoginEnter,
     eGameEvent_LoginExit,
+    eGameEvent_LoginSccess,
+    eGameEvent_LoginFail,
+    eGameEvent_IntoLobby,
+    eGameEvent_InputUserData,
 }
